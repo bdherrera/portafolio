@@ -53,6 +53,14 @@ export interface Project {
     featured?: boolean;
 }
 
+export interface RelationalDbProject {
+    title: string;
+    description: string;
+    image?: string;
+    course?: string;
+    tags?: string[];
+}
+
 export interface Skill {
     category: string;
     items: {
@@ -181,6 +189,23 @@ export const projects: Project[] = [
         ],
         technologies: ["Logica difusa", "Simulacion", "Analisis clinico"],
         featured: false,
+    },
+];
+
+export const relationalDbProjects: RelationalDbProject[] = [
+    {
+        title: "Modelo Entidad-Relacion - Inventarios",
+        description: "Modelo relacional para la gestion de inventarios con entidades, relaciones y cardinalidades.",
+        image: "",
+        course: "Bases de Datos 1",
+        tags: ["ER", "Relacional", "Normalizacion"],
+    },
+    {
+        title: "Modelo Relacional - Clinica",
+        description: "Diseno de base de datos para gestion de pacientes, citas y especialidades.",
+        image: "",
+        course: "Bases de Datos 1",
+        tags: ["ER", "SQL", "Normalizacion"],
     },
 ];
 
