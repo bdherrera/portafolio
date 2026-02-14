@@ -186,6 +186,24 @@ export default function Projects() {
                         </div>
                     </>
                 )}
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="mt-12 flex flex-col items-center gap-4 text-center"
+                >
+                    <p className="text-foreground/70 max-w-2xl">
+                        Proyectos academicos de bases de datos relacionales con modelos e imagenes del diseno.
+                    </p>
+                    <a
+                        href="/relational-db"
+                        className="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary-500 text-primary-400 hover:bg-primary-500 hover:text-white rounded-lg font-medium transition-all duration-200 hover:scale-105"
+                    >
+                        Ver bases de datos relacionales
+                    </a>
+                </motion.div>
             </div>
         </section>
     );
