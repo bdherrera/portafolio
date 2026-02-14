@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Data Engineer Portfolio
+
+Professional portfolio built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion. It is designed to present a backend/data engineering profile with clear sections for experience, projects, skills, education, and certifications.
+
+## Features
+
+- Next.js 14 App Router
+- Tailwind CSS with custom design system
+- Framer Motion animations
+- Fully responsive layout
+- SEO-friendly metadata
+- Modular section-based architecture
+
+## Tech Stack
+
+- Framework: Next.js 14
+- Language: TypeScript
+- Styling: Tailwind CSS
+- Animations: Framer Motion
+- Icons: Lucide React, React Icons
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Install and run
 
 ```bash
+git clone https://github.com/tu-usuario/data-engineer-portfolio.git
+cd data-engineer-portfolio
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Customization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1) Personal data
 
-## Learn More
+Edit `src/data/portfolio.ts` to update:
+- Personal info (name, title, bio, contact)
+- Experience
+- Projects
+- Skills
+- Education, certifications, and languages
 
-To learn more about Next.js, take a look at the following resources:
+### 2) Design system
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Update colors and typography in `Tailwind.config.ts`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 3) SEO and metadata
 
-## Deploy on Vercel
+Update metadata in `src/app/layout.tsx`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+data-engineer-portfolio/
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   └── globals.css
+│   ├── components/
+│   │   ├── sections/
+│   │   │   ├── Hero.tsx
+│   │   │   ├── About.tsx
+│   │   │   ├── Experience.tsx
+│   │   │   ├── Education.tsx
+│   │   │   ├── Projects.tsx
+│   │   │   ├── Skills.tsx
+│   │   │   └── Contact.tsx
+│   │   └── ui/
+│   │       └── Navbar.tsx
+│   └── data/
+│       └── portfolio.ts
+├── public/
+├── Tailwind.config.ts
+├── tsconfig.json
+└── package.json
+```
+
+## Deployment
+
+### Vercel (recommended)
+
+1. Push the repository to GitHub
+2. Import it in Vercel
+3. Deploy
+
+### Netlify
+
+- Build command: `npm run build`
+- Publish directory: `.next`
+
+### GitHub Pages
+
+Requires additional configuration with GitHub Actions.
+
+## Troubleshooting
+
+### Module not found or stale cache
+
+```bash
+rm -rf .next
+npm run dev
+```
+
+### Tailwind configuration
+
+```bash
+npx tailwindcss init -p
+```
+
+### TypeScript errors
+
+```bash
+npx tsc --noEmit
+```
+
+## License
+
+MIT. See `LICENSE`.
+
+## Contact
+
+Open an issue or contact the owner via the portfolio contact section.
