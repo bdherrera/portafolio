@@ -1,4 +1,4 @@
-﻿'use client';
+﻿﻿'use client';
 
 import { useState, useEffect } from 'react';
 import { Database, Menu, X } from 'lucide-react';
@@ -10,6 +10,7 @@ const navItems = [
     { name: 'Experiencia', href: '#experience' },
     { name: 'Educacion', href: '#education' },
     { name: 'Proyectos', href: '#projects' },
+    { name: 'BD Relacional', href: '#relational-db' },
     { name: 'Skills', href: '#skills' },
     { name: 'Contacto', href: '#contact' },
 ];

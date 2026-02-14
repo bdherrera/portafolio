@@ -1,9 +1,10 @@
-﻿import Navbar from '@/components/ui/Navbar';
+﻿﻿import Navbar from '@/components/ui/Navbar';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import Experience from '@/components/sections/Experience';
 import Education from '@/components/sections/Education';
 import Projects from '@/components/sections/Projects';
+import RelationalDb from '@/components/sections/RelationalDb';
 import Skills from '@/components/sections/Skills';
 import Contact from '@/components/sections/Contact';
 
@@ -16,6 +17,7 @@ export default function Home() {
         <Experience />
         <Education />
         <Projects />
+        <RelationalDb />
         <Skills />
         <Contact />
 
