@@ -4,6 +4,25 @@ import { motion } from 'framer-motion';
 import { Database } from 'lucide-react';
 import { relationalDbProjects } from '@/data/portfolio';
 
+const evidenceCategories = [
+    {
+        title: 'Modelado',
+        description: 'Evidencias en construccion.',
+    },
+    {
+        title: 'Normalizacion',
+        description: 'Evidencias en construccion.',
+    },
+    {
+        title: 'SQL',
+        description: 'Evidencias en construccion.',
+    },
+    {
+        title: 'Proyecto',
+        description: 'Evidencias en construccion.',
+    },
+];
+
 export default function RelationalDb() {
     return (
         <section id="relational-db" className="py-20 relative overflow-hidden">
@@ -84,6 +103,52 @@ export default function RelationalDb() {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Evidencias */}
+                <motion.div
+                    id="evidencias"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="mt-20"
+                >
+                    <div className="text-center mb-10">
+                        <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+                            Evidencias
+                        </h3>
+                        <p className="text-foreground/60">
+                            Accesos a categorias de evidencias para bases de datos relacionales.
+                        </p>
+                    </div>
+
+                    <div className="flex flex-wrap justify-center gap-3 mb-10">
+                        {evidenceCategories.map((category) => (
+                            <span
+                                key={category.title}
+                                className="px-4 py-2 bg-primary-500/10 border border-primary-500/30 rounded-full text-sm text-foreground/80"
+                            >
+                                {category.title}
+                            </span>
+                        ))}
+                    </div>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {evidenceCategories.map((category) => (
+                            <div
+                                key={category.title}
+                                className="p-6 rounded-xl bg-gradient-to-br from-primary-500/10 to-accent-500/10 border border-primary-500/20"
+                            >
+                                <h4 className="text-lg font-semibold text-foreground mb-2">
+                                    {category.title}
+                                </h4>
+                                <p className="text-sm text-foreground/60">
+                                    {category.description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
             </div>
         </section>
     );

@@ -1,18 +1,20 @@
-﻿﻿'use client';
+'use client';
 
 import { useState, useEffect } from 'react';
 import { Database, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
-    { name: 'Inicio', href: '#hero' },
-    { name: 'Sobre Mi', href: '#about' },
-    { name: 'Experiencia', href: '#experience' },
-    { name: 'Educacion', href: '#education' },
-    { name: 'Proyectos', href: '#projects' },
-    { name: 'BD Relacional', href: '#relational-db' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contacto', href: '#contact' },
+    { name: 'Inicio', href: '/#hero' },
+    { name: 'Presentacion', href: '/#presentation' },
+    { name: 'Sobre Mi', href: '/#about' },
+    { name: 'Experiencia', href: '/#experience' },
+    { name: 'Educacion', href: '/#education' },
+    { name: 'Proyectos', href: '/#projects' },
+    { name: 'BD Relacional', href: '/relational-db' },
+    { name: 'Evidencias', href: '/relational-db#evidencias' },
+    { name: 'Skills', href: '/#skills' },
+    { name: 'Contacto', href: '/#contact' },
 ];
 
 export default function Navbar() {
@@ -41,7 +43,7 @@ export default function Navbar() {
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <motion.a
-                        href="#hero"
+                        href="/#hero"
                         className="flex items-center gap-2 text-2xl font-bold text-gradient"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -66,7 +68,7 @@ export default function Navbar() {
                             </motion.a>
                         ))}
                         <motion.a
-                            href="#contact"
+                            href="/#contact"
                             className="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors duration-200 text-sm font-medium"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -108,7 +110,7 @@ export default function Navbar() {
                                 </a>
                             ))}
                             <a
-                                href="#contact"
+                                href="/#contact"
                                 className="block w-full px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors duration-200 text-center"
                                 onClick={() => setIsOpen(false)}
                             >
