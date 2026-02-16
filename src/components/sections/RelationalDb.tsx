@@ -23,6 +23,19 @@ const evidenceCategories = [
     },
 ];
 
+const evidenceImages = [
+    {
+        title: 'Modelo ER - Hospital',
+        description: 'Modelo entidad-relacion de hospital.',
+        src: '/images/evidencias/hospital.jpeg',
+    },
+    {
+        title: 'Modelo ER - Biblioteca',
+        description: 'Modelo entidad-relacion de biblioteca.',
+        src: '/images/evidencias/biblioteca.jpeg',
+    },
+];
+
 export default function RelationalDb() {
     return (
         <section id="relational-db" className="py-20 relative overflow-hidden">
@@ -130,6 +143,31 @@ export default function RelationalDb() {
                             >
                                 {category.title}
                             </span>
+                        ))}
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6 mb-10">
+                        {evidenceImages.map((evidence) => (
+                            <div
+                                key={evidence.title}
+                                className="p-6 rounded-xl bg-gradient-to-br from-primary-500/10 to-accent-500/10 border border-primary-500/20"
+                            >
+                                <div className="flex items-center justify-between mb-4">
+                                    <h4 className="text-lg font-semibold text-foreground">
+                                        {evidence.title}
+                                    </h4>
+                                </div>
+                                <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden bg-white/70 border border-primary-500/20">
+                                    <img
+                                        src={evidence.src}
+                                        alt={evidence.title}
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
+                                <p className="text-sm text-foreground/60 mt-3">
+                                    {evidence.description}
+                                </p>
+                            </div>
                         ))}
                     </div>
 
