@@ -32,7 +32,12 @@ const evidenceImages = [
     {
         title: 'Modelo ER - Biblioteca',
         description: 'Modelo entidad-relacion de biblioteca.',
-        src: '/images/evidencias/biblioteca.jpeg',
+        src: '/images/evidencias/biblioteca.png',
+    },
+    {
+        title: 'Modelo ER - Aerolinea',
+        description: 'Modelo entidad-relacion de aerolinea.',
+        src: '/images/evidencias/Areolina.png',
     },
 ];
 
