@@ -93,7 +93,7 @@ export const personalInfo = {
     name: "Brayan David Herrera Acero",
     title: "Backend Java/Python",
     subtitle: "Backend Developer | Data Governance & Data Quality",
-    bio: "Desarrollador backend junior con cerca de  3 años de experiencia en Java y C#. Formado en Analisis y Desarrollo de Sistemas (SENA) y estudiante de Ingenieria de Sistemas. He trabajado en data governance y data quality usando AWS para analisis, procesamiento y monitoreo, integrando procesos ETL y buenas practicas de calidad.",
+    bio: "Tecnólogo en Análisis y Desarrollo de Sistemas de Información, actualmente estudiante de Ingeniería de Sistemas, con cerca de 3 años de experiencia en desarrollo de software y trabajo con datos en entornos corporativos y financieros. He participado en proyectos de Data Governance y Data Quality, apoyando procesos de validación, análisis, monitoreo y automatización de controles de información, así como en el uso de servicios AWS para análisis y procesamiento de datos. También tengo experiencia en desarrollo backend con Java, Spring Framework y Python, construyendo APIs REST y soluciones escalables. Me interesa seguir creciendo en roles de analítica, ingeniería de datos y productos basados en datos.",
     email: "davidhb944@gmail.com",
     phone: "+57 3222310146",
     github: "",

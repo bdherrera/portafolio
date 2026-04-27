@@ -59,7 +59,7 @@ export default function Presentation({
                         <div className="aspect-video w-full rounded-xl bg-black/40 flex items-center justify-center text-foreground/70">
                             <div className="flex items-center gap-3">
                                 <Play size={28} className="text-primary-400" />
-                                <span>Agrega el enlace del video para mostrarlo aqui.</span>
+                                <span></span>
                             </div>
                         </div>
                     )}
