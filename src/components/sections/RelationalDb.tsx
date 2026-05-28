@@ -10,6 +10,7 @@ interface Evidence {
     description: string;
     src: string;
     isExcel?: boolean;
+    isFolder?: boolean;
     link?: string;
 }
 
@@ -31,6 +32,14 @@ const evidenceImages: Evidence[] = [
         isExcel: true,
         link: 'https://unbosqueeduco-my.sharepoint.com/:x:/g/personal/bdherrera_unbosque_edu_co/IQDfA4_wJD5dS4tNGfg22XyXAWVPJSvMSCHKO1hPgpgUitM?e=fdFlPp',
         src: '/images/evidencias/preview-excel.png',
+    },
+    {
+        title: 'Proyecto final - Bases de datos',
+        category: 'SQL',
+        description: 'Carpeta compartida con los entregables del proyecto final de bases de datos relacionales.',
+        isFolder: true,
+        link: 'https://unbosqueeduco-my.sharepoint.com/:f:/g/personal/bdherrera_unbosque_edu_co/IgBDPGo3dkz3Q79mgcmRVh0dAXBOfRZE4XSHWVoknhL80ek?e=qsuUCf',
+        src: '/images/evidencias/proyecto-final.png',
     },
     {
         title: 'Modelo ER - Hospital',
@@ -521,7 +530,7 @@ export default function RelationalDb() {
         : evidenceImages.filter(img => img.category === activeCategory);
 
     const handleCardClick = (evidence: Evidence) => {
-        if (evidence.isExcel && evidence.link) {
+        if ((evidence.isExcel || evidence.isFolder) && evidence.link) {
             window.open(evidence.link, '_blank');
         } else {
             setSelectedImage(evidence);
@@ -568,23 +577,27 @@ export default function RelationalDb() {
                             >
                                 <div 
                                     className={`relative w-full aspect-video rounded-xl overflow-hidden cursor-pointer ${
-                                        evidence.isExcel ? 'bg-emerald-500/10 border-2 border-emerald-500/20' : 'bg-white/80'
+                                        evidence.isExcel || evidence.isFolder ? 'bg-emerald-500/10 border-2 border-emerald-500/20' : 'bg-white/80'
                                     }`}
                                     onClick={() => handleCardClick(evidence)}
                                 >
-                                    {evidence.isExcel ? (
+                                    {evidence.isExcel || evidence.isFolder ? (
                                         <div className="w-full h-full flex flex-col items-center justify-center gap-3">
                                             <FileSpreadsheet size={48} className="text-emerald-500" />
                                             <div className="text-center">
-                                                <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider">Abrir Taller 1</span>
-                                                <p className="text-[10px] text-emerald-600/60 font-mono mt-1">ejercicio 2 taller 1</p>
+                                                <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider">
+                                                    {evidence.isFolder ? 'Abrir proyecto final' : 'Abrir Taller 1'}
+                                                </span>
+                                                <p className="text-[10px] text-emerald-600/60 font-mono mt-1">
+                                                    {evidence.isFolder ? 'SharePoint' : 'ejercicio 2 taller 1'}
+                                                </p>
                                             </div>
                                         </div>
                                     ) : (
                                         <img src={evidence.src} alt={evidence.title} className="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-500" />
                                     )}
                                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        {evidence.isExcel ? <ExternalLink className="text-white" size={24} /> : <Maximize2 className="text-white" size={24} />}
+                                        {evidence.isExcel || evidence.isFolder ? <ExternalLink className="text-white" size={24} /> : <Maximize2 className="text-white" size={24} />}
                                     </div>
                                 </div>
                                 <h4 className="text-lg font-bold text-foreground mt-4 mb-2">{evidence.title}</h4>
