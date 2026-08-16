@@ -6,13 +6,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
     { name: 'Inicio', href: '/#hero' },
-    { name: 'Presentacion', href: '/#presentation' },
-    { name: 'Sobre Mi', href: '/#about' },
+    { name: 'Sobre Mí', href: '/#about' },
     { name: 'Experiencia', href: '/#experience' },
-    { name: 'Educacion', href: '/#education' },
+    { name: 'Educación', href: '/#education' },
     { name: 'Proyectos', href: '/#projects' },
-    { name: 'BD Relacional', href: '/relational-db' },
-    { name: 'Evidencias', href: '/relational-db#evidencias' },
+    { name: 'BD 1', href: '/bases-datos-1' },
+    { name: 'BD 2', href: '/bases-datos-2' },
     { name: 'Skills', href: '/#skills' },
     { name: 'Contacto', href: '/#contact' },
 ];
@@ -53,7 +52,7 @@ export default function Navbar() {
                     </motion.a>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center space-x-8">
+                    <div className="hidden md:flex items-center gap-5">
                         {navItems.map((item, index) => (
                             <motion.a
                                 key={item.name}
@@ -73,7 +72,7 @@ export default function Navbar() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            Contactame
+                            Contáctame
                         </motion.a>
                     </div>
 
@@ -114,7 +113,7 @@ export default function Navbar() {
                                 className="block w-full px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors duration-200 text-center"
                                 onClick={() => setIsOpen(false)}
                             >
-                                Contactame
+                                Contáctame
                             </a>
                         </div>
                     </motion.div>

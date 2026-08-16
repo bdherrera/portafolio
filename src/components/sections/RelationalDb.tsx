@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Maximize2, FileSpreadsheet, ExternalLink, Code2, Table2 } from 'lucide-react';
+import { X, Maximize2, FileSpreadsheet, ExternalLink, Code2, Table2, PlayCircle } from 'lucide-react';
 
 interface Evidence {
     title: string;
@@ -23,6 +23,8 @@ interface SqlEvidence {
 }
 
 const evidenceCategories = ['Todos', 'Modelado', 'Normalización', 'SQL'];
+
+const presentationVideoUrl = 'https://www.youtube.com/embed/WY1F14A5gKo';
 
 const evidenceImages: Evidence[] = [
     {
@@ -538,14 +540,68 @@ export default function RelationalDb() {
     };
 
     return (
-        <section id="relational-db" className="py-20 relative overflow-hidden">
+        <section id="bases-datos-1" className="py-20 relative overflow-hidden">
             <div className="absolute inset-0 grid-background opacity-10" />
             <div id="evidencias" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-mt-24">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                        <span className="text-gradient">Bases de datos relacionales</span>
+                        <span className="text-gradient">Bases de Datos 1</span>
                     </h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full" />
+                    <p className="mt-6 max-w-3xl mx-auto text-lg text-foreground/70 leading-relaxed">
+                        Evidencias organizadas de la asignatura: modelado entidad-relación,
+                        normalización, sentencias SQL, funciones y conceptos de bases de datos relacionales.
+                    </p>
+                </div>
+
+                <motion.div
+                    id="presentacion-bd1"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="scroll-mt-24 rounded-2xl border border-primary-500/20 bg-background/70 overflow-hidden mb-12"
+                >
+                    <div className="p-6 border-b border-primary-500/10">
+                        <div className="flex items-center gap-3 mb-2">
+                            <PlayCircle size={24} className="text-primary-400" />
+                            <h3 className="text-2xl font-bold text-foreground">Presentación</h3>
+                        </div>
+                        <p className="text-foreground/65 leading-relaxed">
+                            Video de presentación correspondiente a Bases de Datos 1.
+                        </p>
+                    </div>
+
+                    <div className="aspect-video bg-black">
+                        <iframe
+                            src={presentationVideoUrl}
+                            title="Video de presentación Bases de Datos 1"
+                            className="h-full w-full"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                        />
+                    </div>
+                </motion.div>
+
+                <div className="grid md:grid-cols-3 gap-5 mb-12">
+                    <div className="rounded-xl border border-primary-500/20 bg-primary-500/10 p-5">
+                        <p className="text-sm font-semibold text-primary-300 mb-2">Modelado</p>
+                        <p className="text-foreground/70 text-sm leading-relaxed">
+                            Diagramas ER para hospitales, bibliotecas, aerolíneas, nómina y otros dominios.
+                        </p>
+                    </div>
+                    <div className="rounded-xl border border-accent-500/20 bg-accent-500/10 p-5">
+                        <p className="text-sm font-semibold text-accent-300 mb-2">Normalización</p>
+                        <p className="text-foreground/70 text-sm leading-relaxed">
+                            Talleres y ejercicios aplicando primera, segunda y tercera forma normal.
+                        </p>
+                    </div>
+                    <div className="rounded-xl border border-primary-500/20 bg-primary-500/10 p-5">
+                        <p className="text-sm font-semibold text-primary-300 mb-2">SQL</p>
+                        <p className="text-foreground/70 text-sm leading-relaxed">
+                            Consultas, joins, funciones, agrupaciones, planes de ejecución y resultados simulados.
+                        </p>
+                    </div>
                 </div>
 
                 <div className="flex flex-wrap justify-center gap-4 mb-12">

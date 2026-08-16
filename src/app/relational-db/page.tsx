@@ -9,7 +9,7 @@ export default function RelationalDbPage() {
 
             <footer className="py-8 border-t border-primary-500/20 text-center">
                 <p className="text-foreground/60">
-                    Construido con dedicacion usando Next.js, TypeScript y Tailwind CSS
+                    Construido con dedicación usando Next.js, TypeScript y Tailwind CSS
                 </p>
                 <p className="text-foreground/40 text-sm mt-2">
                     Copyright {new Date().getFullYear()} - Todos los derechos reservados
