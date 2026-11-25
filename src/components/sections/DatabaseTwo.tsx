@@ -2,9 +2,8 @@
 
 import { motion } from 'framer-motion';
 import {
-    BookOpen,
-    ClipboardList,
     Database,
+    Download,
     FileText,
     PlayCircle,
     UserRound,
@@ -16,33 +15,120 @@ const presentationVideoUrl = 'https://www.youtube.com/embed/l6gSzE8qGOE';
 
 const sectionMenu = [
     { label: 'Presentación', href: '#presentacion-bd2', icon: Video },
-    { label: 'Plan de trabajo', href: '#plan-bd2', icon: ClipboardList },
-    { label: 'Evidencias', href: '#evidencias-bd2', icon: FileText },
+    { label: 'Módulo 1', href: '#modulo-1', icon: FileText },
+    { label: 'Módulo 2', href: '#modulo-2', icon: FileText },
+    { label: 'Módulo 3', href: '#modulo-3', icon: FileText },
 ];
 
-const plannedTopics = [
-    'Diseño físico de bases de datos',
-    'Consultas SQL avanzadas',
-    'Procedimientos, funciones y triggers',
-    'Optimización y planes de ejecución',
-];
+type EvidenceActivity = {
+    title: string;
+    status: string;
+    description: string;
+    highlights?: string[];
+    files?: { name: string; path: string }[];
+};
 
-const evidenceCategories = [
+const modules: {
+    id: string;
+    label: string;
+    title: string;
+    description: string;
+    activities: EvidenceActivity[];
+}[] = [
     {
-        title: 'SQL',
-        description: 'Consultas, ejercicios, laboratorios y resultados relacionados con SQL.',
+        id: 'modulo-1',
+        label: 'Módulo 1',
+        title: 'SQL y PL/SQL en Oracle',
+        description: 'Del repaso de SQL a la implementación de reglas de negocio en Oracle 19c. El módulo incorpora consultas avanzadas, índices, planes de ejecución, transacciones y bloqueos, con Oracle Cloud Infrastructure (OCI) como entorno de práctica.',
+        activities: [
+            {
+                title: 'Taller completo de PL/SQL',
+                status: 'Taller realizado',
+                description: 'Caso de inventario y ventas con procedimientos, funciones, sentencias de control, cursores, excepciones y triggers. El informe de 74 páginas reúne capturas de compilación y ejecución, casos de prueba y justificaciones.',
+                highlights: [
+                    'SP_AJUSTAR_STOCK registra entradas, salidas y ajustes, y valida operaciones inválidas.',
+                    'Un trigger compuesto recalcula el total del pedido y resuelve el error de tabla mutante ORA-04091.',
+                    'PKG_VENTAS integra las reglas de facturación y documenta casos exitosos y errores registrados.',
+                ],
+                files: [{ name: 'Solución SQL e informe de evidencias (ZIP)', path: 'taller-plsql.zip' }],
+            },
+            {
+                title: 'Quiz 2 · SQL avanzado',
+                status: 'Material de práctica',
+                description: 'Consultas con joins, subconsultas, CTE, funciones analíticas, jerarquías y Top-N por grupo.',
+                files: [
+                    { name: 'Script del quiz (SQL)', path: 'quiz-2.sql' },
+                    { name: 'Solución guiada (PDF)', path: 'quiz-2-guia.pdf' },
+                ],
+            },
+            {
+                title: 'Taller integrador MercaAndes',
+                status: 'Enunciado y scripts',
+                description: 'Caso de comercio electrónico con bloqueos en dos sesiones, optimización mediante índices y un reto de confirmación de pedidos con control transaccional.',
+                files: [
+                    { name: 'Enunciado del taller (DOCX)', path: 'mercaandes-enunciado.docx' },
+                    { name: 'Scripts del taller (ZIP)', path: 'mercaandes-scripts.zip' },
+                ],
+            },
+        ],
     },
     {
-        title: 'PL/SQL Scripts',
-        description: 'Procedimientos, funciones, triggers, bloques anónimos y scripts PL/SQL.',
+        id: 'modulo-2',
+        label: 'Módulo 2',
+        title: 'Bases de datos NoSQL',
+        description: 'Del modelo relacional al documental en MongoDB. Las actividades exploran cómo modelar y consultar documentos, y cómo la escalabilidad y los principios BASE y CAP influyen en el diseño.',
+        activities: [
+            {
+                title: 'Consultas y CRUD con Airbnb',
+                status: 'Enunciado del taller',
+                description: 'Filtros, proyecciones y ordenamientos sobre alojamientos, con actualizaciones de objetos anidados y arreglos.',
+                files: [{ name: 'Taller sample_airbnb (PDF)', path: 'taller-airbnb.pdf' }],
+            },
+            {
+                title: 'Agregaciones e índices con películas',
+                status: 'Enunciado del taller',
+                description: 'Consultas y agregaciones en MongoDB Atlas, comparación del plan de ejecución antes y después de un índice compuesto y modelado con documentos JSON.',
+                files: [{ name: 'Taller sample_mflix (PDF)', path: 'taller-mflix.pdf' }],
+            },
+            {
+                title: 'Patrones de modelado documental',
+                status: 'Enunciado del taller',
+                description: 'Actividad de exposición con ejemplos JSON para explicar cuándo aplicar distintos patrones de MongoDB.',
+                files: [{ name: 'Taller de patrones (PDF)', path: 'taller-patrones.pdf' }],
+            },
+            {
+                title: 'Lecturas sobre MQL y sistemas distribuidos',
+                status: 'Material de referencia',
+                description: 'Manual de MongoDB Query Language y guía sobre escalabilidad, Big Data y principios BASE y CAP.',
+                files: [
+                    { name: 'Manual MQL (PDF)', path: 'manual-mql.pdf' },
+                    { name: 'Escalabilidad, BASE y CAP (PDF)', path: 'base-cap.pdf' },
+                ],
+            },
+        ],
     },
     {
-        title: 'NoSQL',
-        description: 'Modelos, consultas y evidencias asociadas a bases de datos NoSQL.',
-    },
-    {
-        title: 'Proyecto',
-        description: 'Entregables, documentación y avances del proyecto de la asignatura.',
+        id: 'modulo-3',
+        label: 'Módulo 3',
+        title: 'Integración, disponibilidad y recuperación de datos',
+        description: 'Del diseño de bases de datos a su operación. El módulo aborda el intercambio de información entre sistemas, la continuidad del servicio y la recuperación ante fallos.',
+        activities: [
+            {
+                title: 'Integración entre sistemas',
+                status: 'Evidencia por adjuntar',
+                description: 'Flujo de datos entre un origen y un destino, con validación de la información transferida.',
+            },
+            {
+                title: 'Disponibilidad del servicio',
+                status: 'Evidencia por adjuntar',
+                description: 'Escenario de fallo y comprobación de la continuidad del servicio.',
+            },
+            {
+                title: 'Respaldo y recuperación',
+                status: 'Evidencia por adjuntar',
+                description: 'Práctica de respaldo, restauración y verificación de los datos recuperados.',
+            },
+        ],
     },
 ];
 
@@ -66,8 +152,8 @@ export default function DatabaseTwo() {
                         <span className="text-gradient">Bases de Datos 2</span>
                     </h1>
                     <p className="max-w-3xl mx-auto text-lg text-foreground/70 leading-relaxed">
-                        Sección preparada para documentar la presentación, el avance de la asignatura
-                        y las evidencias que se irán integrando durante el curso.
+                        Recorrido del semestre desde SQL y PL/SQL en Oracle hasta el modelado con
+                        MongoDB y las estrategias de integración, disponibilidad y recuperación de datos.
                     </p>
                 </motion.div>
 
@@ -143,57 +229,62 @@ export default function DatabaseTwo() {
                     </div>
                 </motion.div>
 
-                <div id="plan-bd2" className="scroll-mt-24 mb-16">
-                    <div className="flex items-center gap-3 mb-6">
-                        <BookOpen size={28} className="text-accent-400" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Plan de trabajo</h2>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-                        {plannedTopics.map((topic, index) => (
-                            <motion.div
-                                key={topic}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.35, delay: index * 0.05 }}
-                                className="rounded-xl border border-accent-500/15 bg-accent-500/10 p-5"
-                            >
-                                <p className="text-sm text-accent-300 font-semibold mb-3">
-                                    Tema {index + 1}
-                                </p>
-                                <p className="text-foreground/80 leading-relaxed">{topic}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-
                 <div id="evidencias-bd2" className="scroll-mt-24">
-                    <div className="flex items-center gap-3 mb-6">
-                        <FileText size={28} className="text-primary-400" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Evidencias</h2>
-                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-10">Evidencias del semestre</h2>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {evidenceCategories.map((item) => (
-                            <motion.article
-                                key={item.title}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.35 }}
-                                className="rounded-xl border border-primary-500/20 bg-gradient-to-br from-primary-500/10 to-accent-500/10 p-6"
-                            >
-                                <h3 className="text-xl font-bold text-foreground mb-3">{item.title}</h3>
-                                <p className="text-sm text-foreground/65 leading-relaxed">
-                                    {item.description}
-                                </p>
-                                <div className="mt-5 rounded-lg border border-primary-500/15 bg-background/60 px-4 py-3 text-sm text-foreground/45">
-                                    Sin evidencias cargadas por ahora.
-                                </div>
-                            </motion.article>
-                        ))}
-                    </div>
+                    {modules.map((module) => (
+                        <section
+                            key={module.id}
+                            id={module.id}
+                            aria-labelledby={module.id + '-titulo'}
+                            className="scroll-mt-24 mb-12 rounded-2xl border border-primary-500/20 bg-background/70 p-5 sm:p-8"
+                        >
+                            <p className="text-sm font-semibold text-primary-300 mb-2">{module.label}</p>
+                            <h3 id={module.id + '-titulo'} className="text-2xl md:text-3xl font-bold mb-3">
+                                {module.title}
+                            </h3>
+                            <p className="max-w-3xl text-foreground/75 leading-relaxed mb-7">
+                                {module.description}
+                            </p>
+
+                            <div className="grid gap-5 md:grid-cols-2">
+                                {module.activities.map((activity) => (
+                                    <article
+                                        key={activity.title}
+                                        className={'rounded-xl border border-primary-500/20 bg-primary-500/5 p-5' +
+                                            (activity.highlights ? ' md:col-span-2' : '')}
+                                    >
+                                        <p className="text-sm font-medium text-accent-300 mb-2">{activity.status}</p>
+                                        <h4 className="text-lg font-bold mb-2">{activity.title}</h4>
+                                        <p className="text-sm text-foreground/75 leading-relaxed">{activity.description}</p>
+
+                                        {activity.highlights && (
+                                            <ul className="list-disc pl-5 mt-4 space-y-2 text-sm text-foreground/80">
+                                                {activity.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+                                            </ul>
+                                        )}
+
+                                        {activity.files && (
+                                            <ul className="mt-4 space-y-2">
+                                                {activity.files.map((file) => (
+                                                    <li key={file.path}>
+                                                        <a
+                                                            href={'/evidencias/bases-datos-2/' + file.path}
+                                                            download
+                                                            className="inline-flex items-center gap-2 py-1 text-sm font-medium text-primary-300 underline underline-offset-4 hover:text-foreground"
+                                                        >
+                                                            <Download size={16} className="shrink-0" aria-hidden="true" />
+                                                            {file.name}
+                                                        </a>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                    </article>
+                                ))}
+                            </div>
+                        </section>
+                    ))}
                 </div>
             </div>
         </section>
