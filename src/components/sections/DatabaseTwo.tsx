@@ -62,6 +62,12 @@ const modules: {
                 ],
             },
             {
+                title: 'Práctica de repaso y ranking en SQL',
+                status: 'Práctica complementaria',
+                description: 'Dos consultas de solo lectura sobre el esquema del Quiz 2: totales de pedidos por sucursal y clasificación de productos por categoría con DENSE_RANK para conservar los empates.',
+                files: [{ name: 'Consultas de repaso y ranking (SQL)', path: 'practica-ranking-oracle.sql' }],
+            },
+            {
                 title: 'Taller integrador MercaAndes',
                 status: 'Enunciado y scripts',
                 description: 'Caso de comercio electrónico con bloqueos en dos sesiones, optimización mediante índices y un reto de confirmación de pedidos con control transaccional.',
@@ -78,6 +84,19 @@ const modules: {
         title: 'Bases de datos NoSQL',
         description: 'Del modelo relacional al documental en MongoDB. Las actividades exploran cómo modelar y consultar documentos, y cómo la escalabilidad y los principios BASE y CAP influyen en el diseño.',
         activities: [
+            {
+                title: 'Laboratorio de consultas, índices y modelado en MongoDB',
+                status: 'Práctica ejecutada con datos sintéticos',
+                description: 'Filtrado y actualización de arreglos en alojamientos, comparación de documentos examinados con un índice compuesto y ranking de películas con $lookup. El modelo explica cuándo embeber datos y cuándo usar referencias.',
+                highlights: [
+                    'La consulta de alojamientos examinó tres documentos sin índice y dos al forzar el índice compuesto.',
+                    'La actualización añadió Cocina a la lista de servicios. La agregación contó dos comentarios para Horizonte y uno para La estación.',
+                ],
+                files: [
+                    { name: 'Laboratorio de MongoDB (JavaScript)', path: 'laboratorio-mongodb.cjs' },
+                    { name: 'Modelo documental con ejemplos (Markdown)', path: 'modelado-mongodb.md' },
+                ],
+            },
             {
                 title: 'Consultas y CRUD con Airbnb',
                 status: 'Enunciado del taller',
@@ -114,19 +133,15 @@ const modules: {
         description: 'Del diseño de bases de datos a su operación. El módulo aborda el intercambio de información entre sistemas, la continuidad del servicio y la recuperación ante fallos.',
         activities: [
             {
-                title: 'Integración entre sistemas',
-                status: 'Evidencia por adjuntar',
-                description: 'Flujo de datos entre un origen y un destino, con validación de la información transferida.',
-            },
-            {
-                title: 'Disponibilidad del servicio',
-                status: 'Evidencia por adjuntar',
-                description: 'Escenario de fallo y comprobación de la continuidad del servicio.',
-            },
-            {
-                title: 'Respaldo y recuperación',
-                status: 'Evidencia por adjuntar',
-                description: 'Práctica de respaldo, restauración y verificación de los datos recuperados.',
+                title: 'Laboratorio de integración, concurrencia y recuperación',
+                status: 'Práctica ejecutada con datos sintéticos',
+                description: 'Caso local de pedidos en Python y SQLite. La prueba usa dos conexiones para observar la continuidad de lectura durante una escritura y un respaldo para recuperar un pedido borrado.',
+                highlights: [
+                    'Integración: el CSV traía cinco filas. Se cargaron tres pedidos válidos y únicos con diez unidades en total.',
+                    'Disponibilidad de lectura: con WAL, una segunda conexión leyó el valor anterior durante la escritura y vio el nuevo valor tras el COMMIT.',
+                    'Recuperación: la restauración devolvió los tres pedidos y la comprobación de integridad dio ok.',
+                ],
+                files: [{ name: 'Laboratorio reproducible (Python)', path: 'laboratorio-integracion-recuperacion.py' }],
             },
         ],
     },
