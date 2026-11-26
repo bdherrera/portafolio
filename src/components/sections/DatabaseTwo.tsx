@@ -4,7 +4,9 @@ import { motion } from 'framer-motion';
 import {
     Database,
     Download,
+    ExternalLink,
     FileText,
+    Github,
     PlayCircle,
     UserRound,
     Video,
@@ -19,6 +21,30 @@ const sectionMenu = [
     { label: 'Módulo 1', href: '#modulo-1', icon: FileText },
     { label: 'Módulo 2', href: '#modulo-2', icon: FileText },
     { label: 'Módulo 3', href: '#modulo-3', icon: FileText },
+    { label: 'Proyecto', href: '#sound-pass', icon: Github },
+];
+
+const soundPassRepositories = [
+    {
+        label: 'Frontend',
+        url: 'https://github.com/bdherrera/soundpass-frontend',
+        stack: 'React 18, Vite, TypeScript y Tailwind CSS',
+        features: [
+            'Catálogo de eventos, compra de entradas con cola de reserva, órdenes y entradas con QR.',
+            'Reseñas y panel de administración.',
+            'Consumo de la API REST con tipos generados a partir del contrato OpenAPI.',
+        ],
+    },
+    {
+        label: 'Backend',
+        url: 'https://github.com/bdherrera/soundpass-backend',
+        stack: 'Java 21, Spring Boot 3.4, PostgreSQL 18 y MongoDB 8.0',
+        features: [
+            'PostgreSQL almacena eventos, órdenes y entradas. Sus funciones y triggers controlan la compra sin sobreventa, el check-in y la auditoría.',
+            'MongoDB almacena reseñas, perfiles de artistas y detalles de eventos. La cola de reserva usa Computed y los registros de actividad se agrupan por hora con Bucket.',
+            'Si MongoDB deja de responder, el catálogo y la compra siguen disponibles.',
+        ],
+    },
 ];
 
 type EvidenceActivity = {
@@ -308,6 +334,43 @@ export default function DatabaseTwo() {
                         </section>
                     ))}
                 </div>
+
+                <section
+                    id="sound-pass"
+                    aria-labelledby="sound-pass-titulo"
+                    className="scroll-mt-24 rounded-2xl border border-primary-500/20 bg-background/70 p-5 sm:p-8"
+                >
+                    <p className="mb-2 text-sm font-semibold text-primary-300">Proyecto de la asignatura</p>
+                    <h2 id="sound-pass-titulo" className="mb-4 text-2xl font-bold md:text-3xl">Sound Pass</h2>
+                    <p className="mb-5 max-w-3xl text-foreground/75">
+                        Plataforma de venta de entradas para eventos. El proyecto combina una interfaz web con una API
+                        y usa bases de datos relacionales y documentales para distintos tipos de información.
+                    </p>
+                    <ul className="grid gap-5 md:grid-cols-2">
+                        {soundPassRepositories.map((repository) => (
+                            <li key={repository.url} className="rounded-xl border border-primary-500/20 bg-primary-500/5 p-5">
+                                <h3 className="mb-2 text-lg font-bold">{repository.label}</h3>
+                                <p className="mb-3 text-sm font-medium text-accent-300">{repository.stack}</p>
+                                <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-foreground/75">
+                                    {repository.features.map((feature) => <li key={feature}>{feature}</li>)}
+                                </ul>
+                                <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-medium text-primary-300">
+                                    <a href={repository.url} className="inline-flex items-center gap-2 underline underline-offset-4 hover:text-foreground">
+                                        <Github size={16} aria-hidden="true" />
+                                        {repository.label} en GitHub
+                                    </a>
+                                    <a
+                                        href={repository.url + '/blob/main/README.md'}
+                                        aria-label={'README del ' + repository.label.toLowerCase()}
+                                        className="inline-flex items-center gap-2 underline underline-offset-4 hover:text-foreground"
+                                    >
+                                        README <ExternalLink size={14} aria-hidden="true" />
+                                    </a>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
             </div>
         </section>
     );
