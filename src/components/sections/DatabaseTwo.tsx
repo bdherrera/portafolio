@@ -10,6 +10,7 @@ import {
     Video,
 } from 'lucide-react';
 import { personalInfo } from '@/data/portfolio';
+import DatabaseTwoModels, { type DatabaseTwoModel } from './DatabaseTwoModels';
 
 const presentationVideoUrl = 'https://www.youtube.com/embed/l6gSzE8qGOE';
 
@@ -26,6 +27,7 @@ type EvidenceActivity = {
     description: string;
     highlights?: string[];
     files?: { name: string; path: string }[];
+    model?: DatabaseTwoModel;
 };
 
 const modules: {
@@ -54,6 +56,7 @@ const modules: {
             },
             {
                 title: 'Quiz 2 · SQL avanzado',
+                model: 'quiz',
                 status: 'Material de práctica',
                 description: 'Consultas con joins, subconsultas, CTE, funciones analíticas, jerarquías y Top-N por grupo.',
                 files: [
@@ -69,6 +72,7 @@ const modules: {
             },
             {
                 title: 'Taller integrador MercaAndes',
+                model: 'mercaandes',
                 status: 'Enunciado y scripts',
                 description: 'Caso de comercio electrónico con bloqueos en dos sesiones, optimización mediante índices y un reto de confirmación de pedidos con control transaccional.',
                 files: [
@@ -86,6 +90,7 @@ const modules: {
         activities: [
             {
                 title: 'Laboratorio de consultas, índices y modelado en MongoDB',
+                model: 'mongo',
                 status: 'Práctica ejecutada con datos sintéticos',
                 description: 'Filtrado y actualización de arreglos en alojamientos, comparación de documentos examinados con un índice compuesto y ranking de películas con $lookup. El modelo explica cuándo embeber datos y cuándo usar referencias.',
                 highlights: [
@@ -278,6 +283,8 @@ export default function DatabaseTwo() {
                                                 {activity.highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
                                             </ul>
                                         )}
+
+                                        {activity.model && <DatabaseTwoModels model={activity.model} />}
 
                                         {activity.files && (
                                             <ul className="mt-4 space-y-2">
