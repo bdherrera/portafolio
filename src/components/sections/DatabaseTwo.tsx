@@ -40,9 +40,9 @@ const soundPassRepositories = [
         url: 'https://github.com/bdherrera/soundpass-backend',
         stack: 'Java 21, Spring Boot 3.4, PostgreSQL 18 y MongoDB 8.0',
         features: [
-            'PostgreSQL almacena eventos, órdenes y entradas. Sus funciones y triggers controlan la compra sin sobreventa, el check-in y la auditoría.',
-            'MongoDB almacena reseñas, perfiles de artistas y detalles de eventos. La cola de reserva usa Computed y los registros de actividad se agrupan por hora con Bucket.',
-            'Si MongoDB deja de responder, el catálogo y la compra siguen disponibles.',
+            'API REST con autenticación JWT y roles de usuario y administrador.',
+            'Funciones y triggers para check-in y auditoría de cambios de estado.',
+            'Reseñas, perfiles de artistas y detalles de eventos almacenados en MongoDB.',
         ],
     },
 ];
@@ -130,15 +130,26 @@ const modules: {
             },
             {
                 title: 'Consultas y CRUD con Airbnb',
-                status: 'Enunciado del taller',
-                description: 'Filtros, proyecciones y ordenamientos sobre alojamientos, con actualizaciones de objetos anidados y arreglos.',
-                files: [{ name: 'Taller sample_airbnb (PDF)', path: 'taller-airbnb.pdf' }],
+                status: 'Solución verificada en MongoDB local',
+                description: '30 ejercicios de inserción, validación de claves, consultas, actualizaciones y agregación. El informe documenta las salidas de una ejecución con datos sintéticos de estructura sample_airbnb.',
+                files: [
+                    { name: 'Informe de solución y evidencia (PDF)', path: 'evidencia-airbnb.pdf' },
+                    { name: 'Script reproducible (JavaScript)', path: 'solucion-airbnb.cjs' },
+                    { name: 'Salidas de la ejecución (JSON)', path: 'resultados-airbnb.json' },
+                    { name: 'Enunciado sample_airbnb (PDF)', path: 'taller-airbnb.pdf' },
+                ],
             },
             {
                 title: 'Agregaciones e índices con películas',
-                status: 'Enunciado del taller',
-                description: 'Consultas y agregaciones en MongoDB Atlas, comparación del plan de ejecución antes y después de un índice compuesto y modelado con documentos JSON.',
-                files: [{ name: 'Taller sample_mflix (PDF)', path: 'taller-mflix.pdf' }],
+                status: 'Solución verificada en MongoDB local',
+                description: '17 ejercicios con datos sintéticos de estructura sample_mflix. Incluye consultas, agregaciones y tres modelos documentales. El índice compuesto redujo de 6.056 a 2 los documentos examinados en la consulta de dramas.',
+                files: [
+                    { name: 'Informe de solución, evidencia y modelos (PDF)', path: 'evidencia-mflix.pdf' },
+                    { name: 'Script principal (JavaScript)', path: 'solucion-mflix.cjs' },
+                    { name: 'Módulo de modelos requerido por el script (JavaScript)', path: 'modelos-taller-mflix.cjs' },
+                    { name: 'Salidas, planes ganadores y documentos de ejemplo (JSON)', path: 'resultados-mflix.json' },
+                    { name: 'Enunciado sample_mflix (PDF)', path: 'taller-mflix.pdf' },
+                ],
             },
             {
                 title: 'Patrones de modelado documental',
@@ -346,6 +357,30 @@ export default function DatabaseTwo() {
                         Plataforma de venta de entradas para eventos. El proyecto combina una interfaz web con una API
                         y usa bases de datos relacionales y documentales para distintos tipos de información.
                     </p>
+                    <h3 className="mb-3 text-lg font-bold">Cómo aplica lo aprendido en la materia</h3>
+                    <dl className="mb-6 grid gap-3 md:grid-cols-3">
+                        <div className="rounded-lg border border-primary-500/20 p-4">
+                            <dt className="font-semibold text-primary-300">Módulo 1 · Modelo relacional</dt>
+                            <dd className="mt-2 text-sm leading-relaxed text-foreground/75">
+                                PostgreSQL registra órdenes y entradas. La función de compra controla que las compras
+                                simultáneas respeten el cupo disponible.
+                            </dd>
+                        </div>
+                        <div className="rounded-lg border border-primary-500/20 p-4">
+                            <dt className="font-semibold text-primary-300">Módulo 2 · Patrones NoSQL</dt>
+                            <dd className="mt-2 text-sm leading-relaxed text-foreground/75">
+                                En MongoDB, <strong>Computed</strong> mantiene contadores de la cola de reserva para calcular
+                                la posición de cada turno. <strong>Bucket</strong> agrupa los registros de actividad por hora.
+                            </dd>
+                        </div>
+                        <div className="rounded-lg border border-primary-500/20 p-4">
+                            <dt className="font-semibold text-primary-300">Módulo 3 · Disponibilidad</dt>
+                            <dd className="mt-2 text-sm leading-relaxed text-foreground/75">
+                                Si MongoDB deja de responder, el catálogo y la compra siguen disponibles.
+                                La interfaz indica que la compra se realiza sin cola de reserva.
+                            </dd>
+                        </div>
+                    </dl>
                     <ul className="grid gap-5 md:grid-cols-2">
                         {soundPassRepositories.map((repository) => (
                             <li key={repository.url} className="rounded-xl border border-primary-500/20 bg-primary-500/5 p-5">

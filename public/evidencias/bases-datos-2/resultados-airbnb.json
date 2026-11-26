@@ -1,0 +1,757 @@
+{
+  "entorno": "MongoDB local, datos sintéticos con estructura de sample_airbnb",
+  "ejercicios": [
+    {
+      "point": 1,
+      "logic": "Inserción individual con precio Decimal128.",
+      "total": 1,
+      "sample": [
+        {
+          "_id": "taller-cabin",
+          "name": "Cozy Cabin Retreat",
+          "summary": "Cabaña de práctica",
+          "property_type": "Cabin",
+          "price": {
+            "$numberDecimal": "150"
+          }
+        }
+      ]
+    },
+    {
+      "point": 2,
+      "logic": "Objeto address embebido.",
+      "total": 1,
+      "sample": [
+        {
+          "_id": "taller-santiago",
+          "name": "Apartamento Santiago",
+          "address": {
+            "country": "Chile",
+            "market": "Santiago"
+          }
+        }
+      ]
+    },
+    {
+      "point": 3,
+      "logic": "Dos documentos en una operación.",
+      "total": 2,
+      "sample": [
+        {
+          "name": "Studio de Arte Urbano",
+          "price": {
+            "$numberDecimal": "80"
+          },
+          "_id": "6b0798a9545b37342ca0848c"
+        },
+        {
+          "name": "Loft Minimalista",
+          "price": {
+            "$numberDecimal": "110"
+          },
+          "_id": "6b0798a9545b37342ca0848d"
+        }
+      ]
+    },
+    {
+      "point": 4,
+      "logic": "Arreglo con tres servicios.",
+      "total": 1,
+      "sample": [
+        {
+          "name": "Casa equipada",
+          "amenities": [
+            "Wifi",
+            "Kitchen",
+            "Free parking"
+          ],
+          "_id": "6b0798a9545b37342ca0848e"
+        }
+      ]
+    },
+    {
+      "point": 5,
+      "logic": "El índice único de _id rechaza la segunda inserción.",
+      "total": 0,
+      "sample": {
+        "codigo": 11000,
+        "error": "E11000 duplicate key"
+      }
+    },
+    {
+      "point": 6,
+      "logic": "Ruta de un campo anidado.",
+      "total": 2,
+      "sample": [
+        {
+          "name": "Luxury Río",
+          "price": {
+            "$numberDecimal": "72.5"
+          }
+        },
+        {
+          "name": "Apartamento São Paulo",
+          "price": {
+            "$numberDecimal": "55"
+          }
+        }
+      ]
+    },
+    {
+      "point": 7,
+      "logic": "Comparación estricta por cantidad de camas.",
+      "total": 2,
+      "sample": [
+        {
+          "name": "Apartamento São Paulo",
+          "number_of_reviews": 24
+        },
+        {
+          "name": "Penthouse",
+          "number_of_reviews": 30
+        }
+      ]
+    },
+    {
+      "point": 8,
+      "logic": "Precio estrictamente menor que 75.",
+      "total": 2,
+      "sample": [
+        {
+          "name": "Luxury Río",
+          "property_type": "House",
+          "price": {
+            "$numberDecimal": "72.5"
+          }
+        },
+        {
+          "name": "Apartamento São Paulo",
+          "property_type": "Apartment",
+          "price": {
+            "$numberDecimal": "55"
+          }
+        }
+      ]
+    },
+    {
+      "point": 9,
+      "logic": "Ambas condiciones deben cumplirse.",
+      "total": 1,
+      "sample": [
+        {
+          "name": "Suite Nueva York",
+          "address": {
+            "market": "New York"
+          },
+          "property_type": "Apartment"
+        }
+      ]
+    },
+    {
+      "point": 10,
+      "logic": "$in acepta cualquiera de los tipos indicados.",
+      "total": 4,
+      "sample": [
+        {
+          "name": "Luxury Río",
+          "property_type": "House"
+        },
+        {
+          "name": "Casa Madrid",
+          "property_type": "House"
+        },
+        {
+          "name": "Condominio Barcelona",
+          "property_type": "Condominium"
+        },
+        {
+          "name": "Penthouse",
+          "property_type": "Condominium"
+        }
+      ]
+    },
+    {
+      "point": 11,
+      "logic": "Expresión regular con límites de palabra y opción i.",
+      "total": 1,
+      "sample": [
+        {
+          "name": "Luxury Río"
+        }
+      ]
+    },
+    {
+      "point": 12,
+      "logic": "Igualdad contra un elemento del arreglo.",
+      "total": 3,
+      "sample": [
+        {
+          "name": "Luxury Río",
+          "amenities": [
+            "Wifi",
+            "Heating",
+            "Cable TV"
+          ]
+        },
+        {
+          "name": "Condominio Barcelona",
+          "amenities": [
+            "Heating",
+            "Kitchen"
+          ]
+        },
+        {
+          "name": "Penthouse",
+          "amenities": [
+            "Wifi",
+            "Heating"
+          ]
+        }
+      ]
+    },
+    {
+      "point": 13,
+      "logic": "$size exige exactamente 20 elementos.",
+      "total": 1,
+      "sample": [
+        {
+          "name": "Suite Nueva York",
+          "amenities": [
+            "Servicio 0",
+            "Servicio 1",
+            "Servicio 2",
+            "Servicio 3",
+            "Servicio 4",
+            "Servicio 5",
+            "Servicio 6",
+            "Servicio 7",
+            "Servicio 8",
+            "Servicio 9",
+            "Servicio 10",
+            "Servicio 11",
+            "Servicio 12",
+            "Servicio 13",
+            "Servicio 14",
+            "Servicio 15",
+            "Servicio 16",
+            "Servicio 17",
+            "Servicio 18",
+            "Servicio 19"
+          ]
+        }
+      ]
+    },
+    {
+      "point": 14,
+      "logic": "Orden descendente y desempate por _id. Solo precios numéricos.",
+      "total": 9,
+      "sample": [
+        {
+          "name": "Penthouse",
+          "address": {
+            "country": "United States"
+          },
+          "price": {
+            "$numberDecimal": "1250"
+          }
+        },
+        {
+          "name": "Suite Nueva York",
+          "address": {
+            "country": "United States"
+          },
+          "price": {
+            "$numberDecimal": "305"
+          }
+        },
+        {
+          "name": "Cozy Cabin Retreat",
+          "price": {
+            "$numberDecimal": "150"
+          }
+        },
+        {
+          "name": "Casa Madrid",
+          "address": {
+            "country": "Spain"
+          },
+          "price": {
+            "$numberDecimal": "110"
+          }
+        },
+        {
+          "name": "Loft Minimalista",
+          "price": {
+            "$numberDecimal": "110"
+          }
+        },
+        {
+          "name": "Condominio Barcelona",
+          "address": {
+            "country": "Spain"
+          },
+          "price": {
+            "$numberDecimal": "99"
+          }
+        },
+        {
+          "name": "Studio de Arte Urbano",
+          "price": {
+            "$numberDecimal": "80"
+          }
+        },
+        {
+          "name": "Luxury Río",
+          "address": {
+            "country": "Brazil"
+          },
+          "price": {
+            "$numberDecimal": "72.5"
+          }
+        },
+        {
+          "name": "Apartamento São Paulo",
+          "address": {
+            "country": "Brazil"
+          },
+          "price": {
+            "$numberDecimal": "55"
+          }
+        }
+      ]
+    },
+    {
+      "point": 15,
+      "logic": "Igualdad con null incluye el campo ausente.",
+      "total": 7,
+      "sample": [
+        {
+          "name": "Casa Madrid",
+          "summary": "Datos de práctica",
+          "description": "Alojamiento sintético"
+        },
+        {
+          "name": "Luxury Río",
+          "summary": "Datos de práctica",
+          "description": "Alojamiento sintético"
+        },
+        {
+          "name": "Cozy Cabin Retreat",
+          "summary": "Cabaña de práctica"
+        },
+        {
+          "name": "Apartamento Santiago"
+        },
+        {
+          "name": "Studio de Arte Urbano"
+        }
+      ]
+    },
+    {
+      "point": 16,
+      "logic": "$set reemplaza una propiedad de la cabaña.",
+      "total": 1,
+      "sample": {
+        "modificados": 1,
+        "insertados": 0,
+        "documentos": [
+          {
+            "_id": "taller-cabin",
+            "name": "Cozy Cabin Retreat",
+            "summary": "Cabaña de práctica",
+            "property_type": "Entire home/apt",
+            "price": {
+              "$numberDecimal": "150"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "point": 17,
+      "logic": "$set agrega el resumen y $push crea el arreglo si falta.",
+      "total": 1,
+      "sample": {
+        "modificados": 1,
+        "insertados": 0,
+        "documentos": [
+          {
+            "_id": "taller-santiago",
+            "name": "Apartamento Santiago",
+            "address": {
+              "country": "Chile",
+              "market": "Santiago"
+            },
+            "amenities": [
+              "Smart TV"
+            ],
+            "summary": "Alojamiento actualizado"
+          }
+        ]
+      }
+    },
+    {
+      "point": 18,
+      "logic": "$inc modifica los alojamientos de España.",
+      "total": 2,
+      "sample": {
+        "modificados": 2,
+        "insertados": 0,
+        "documentos": [
+          {
+            "_id": "6b0798a9545b37342ca08487",
+            "name": "Casa Madrid",
+            "address": {
+              "country": "Spain",
+              "market": "Madrid"
+            },
+            "property_type": "House",
+            "price": {
+              "$numberDecimal": "110"
+            },
+            "amenities": [
+              "Wifi",
+              "Cable TV"
+            ],
+            "beds": 3,
+            "accommodates": 4,
+            "number_of_reviews": 7,
+            "summary": "Datos de práctica",
+            "description": "Alojamiento sintético",
+            "review_scores": {
+              "review_scores_rating": 81
+            },
+            "last_review": null
+          },
+          {
+            "_id": "6b0798a9545b37342ca08489",
+            "name": "Condominio Barcelona",
+            "address": {
+              "country": "Spain",
+              "market": "Barcelona"
+            },
+            "property_type": "Condominium",
+            "price": {
+              "$numberDecimal": "99"
+            },
+            "amenities": [
+              "Heating",
+              "Kitchen"
+            ],
+            "beds": 5,
+            "accommodates": 6,
+            "number_of_reviews": 19,
+            "summary": "Datos de práctica",
+            "description": "Alojamiento sintético",
+            "review_scores": {
+              "review_scores_rating": 83
+            },
+            "last_review": "2019-05-01T00:00:00.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "point": 19,
+      "logic": "$pull elimina Cable TV conservando los demás servicios.",
+      "total": 2,
+      "sample": {
+        "modificados": 2,
+        "insertados": 0,
+        "documentos": [
+          {
+            "_id": "6b0798a9545b37342ca08486",
+            "name": "Luxury Río",
+            "address": {
+              "country": "Brazil",
+              "market": "Rio"
+            },
+            "property_type": "House",
+            "price": {
+              "$numberDecimal": "72.5"
+            },
+            "amenities": [
+              "Wifi",
+              "Heating"
+            ],
+            "beds": 2,
+            "accommodates": 3,
+            "number_of_reviews": 0,
+            "summary": "Datos de práctica",
+            "description": "Alojamiento sintético",
+            "review_scores": {
+              "review_scores_rating": 80
+            }
+          },
+          {
+            "_id": "6b0798a9545b37342ca08487",
+            "name": "Casa Madrid",
+            "address": {
+              "country": "Spain",
+              "market": "Madrid"
+            },
+            "property_type": "House",
+            "price": {
+              "$numberDecimal": "110"
+            },
+            "amenities": [
+              "Wifi"
+            ],
+            "beds": 3,
+            "accommodates": 4,
+            "number_of_reviews": 7,
+            "summary": "Datos de práctica",
+            "description": "Alojamiento sintético",
+            "review_scores": {
+              "review_scores_rating": 81
+            },
+            "last_review": null
+          }
+        ]
+      }
+    },
+    {
+      "point": 20,
+      "logic": "El upsert crea el documento si no existe.",
+      "total": 0,
+      "sample": {
+        "modificados": 0,
+        "insertados": 1,
+        "documentos": [
+          {
+            "_id": "6b0798a93a3182cfa365503f",
+            "name": "Mansión de Prueba",
+            "address": {
+              "country": "United States"
+            },
+            "price": {
+              "$numberDecimal": "1500"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "point": 21,
+      "logic": "La posición 10 existe solo cuando hay más de 10 servicios.",
+      "total": 1,
+      "sample": [
+        {
+          "alojamientos": 1
+        }
+      ]
+    },
+    {
+      "point": 22,
+      "logic": "Promedia solo precios numéricos de países identificados.",
+      "total": 3,
+      "sample": [
+        {
+          "_id": "Brazil",
+          "promedio": {
+            "$numberDecimal": "63.75"
+          }
+        },
+        {
+          "_id": "Spain",
+          "promedio": {
+            "$numberDecimal": "104.5"
+          }
+        },
+        {
+          "_id": "United States",
+          "promedio": {
+            "$numberDecimal": "1018.333333333333333333333333333333"
+          }
+        }
+      ]
+    },
+    {
+      "point": 23,
+      "logic": "Cada aparición de un servicio cuenta una vez por elemento del arreglo.",
+      "total": 5,
+      "sample": [
+        {
+          "_id": "Wifi",
+          "frecuencia": 5
+        },
+        {
+          "_id": "Heating",
+          "frecuencia": 3
+        },
+        {
+          "_id": "Kitchen",
+          "frecuencia": 3
+        },
+        {
+          "_id": "Free parking",
+          "frecuencia": 1
+        },
+        {
+          "_id": "Servicio 0",
+          "frecuencia": 1
+        }
+      ]
+    },
+    {
+      "point": 24,
+      "logic": "Excluye los documentos sin tipo de propiedad.",
+      "total": 4,
+      "sample": [
+        {
+          "_id": "Apartment",
+          "cantidad": 2
+        },
+        {
+          "_id": "Condominium",
+          "cantidad": 2
+        },
+        {
+          "_id": "House",
+          "cantidad": 2
+        },
+        {
+          "_id": "Entire home/apt",
+          "cantidad": 1
+        }
+      ]
+    },
+    {
+      "point": 25,
+      "logic": "$toInt trunca decimales. Se omiten precios ausentes y fuera de int32.",
+      "total": 10,
+      "sample": [
+        {
+          "name": "Apartamento São Paulo",
+          "price": {
+            "$numberDecimal": "55"
+          },
+          "price_entero": 55
+        },
+        {
+          "name": "Casa Madrid",
+          "price": {
+            "$numberDecimal": "110"
+          },
+          "price_entero": 110
+        },
+        {
+          "name": "Condominio Barcelona",
+          "price": {
+            "$numberDecimal": "99"
+          },
+          "price_entero": 99
+        },
+        {
+          "name": "Cozy Cabin Retreat",
+          "price": {
+            "$numberDecimal": "150"
+          },
+          "price_entero": 150
+        },
+        {
+          "name": "Loft Minimalista",
+          "price": {
+            "$numberDecimal": "110"
+          },
+          "price_entero": 110
+        }
+      ]
+    },
+    {
+      "point": 26,
+      "logic": "El promedio usa solo calificaciones numéricas con diez reseñas o más.",
+      "total": 1,
+      "sample": [
+        {
+          "_id": null,
+          "promedio": 83.5
+        }
+      ]
+    },
+    {
+      "point": 27,
+      "logic": "Intervalos continuos [0,101), [101,301), [301,1000) y [1000,+∞). El punto 1000 pertenece al último rango.",
+      "total": 4,
+      "sample": [
+        {
+          "_id": {
+            "$numberDecimal": "0"
+          },
+          "cantidad": 4
+        },
+        {
+          "_id": {
+            "$numberDecimal": "101"
+          },
+          "cantidad": 3
+        },
+        {
+          "_id": {
+            "$numberDecimal": "301"
+          },
+          "cantidad": 1
+        },
+        {
+          "_id": "1000+",
+          "cantidad": 2
+        }
+      ]
+    },
+    {
+      "point": 28,
+      "logic": "El ejercicio es teórico en Atlas. Se demuestra con una colección hosts sintética de igual tipo de clave.",
+      "total": 1,
+      "sample": [
+        {
+          "name": "Cozy Cabin Retreat",
+          "anfitriones": [
+            {
+              "_id": "6b0798a9545b37342ca0848f",
+              "host_id": "h1",
+              "name": "Anfitrión de prueba"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "point": 29,
+      "logic": "Promedia capacidad numérica por tipo de propiedad.",
+      "total": 3,
+      "sample": [
+        {
+          "_id": "Condominium",
+          "promedio": 7
+        },
+        {
+          "_id": "Apartment",
+          "promedio": 6
+        },
+        {
+          "_id": "House",
+          "promedio": 3.5
+        }
+      ]
+    },
+    {
+      "point": 30,
+      "logic": "$year se aplica solo a valores BSON de tipo fecha.",
+      "total": 3,
+      "sample": [
+        {
+          "_id": 2019,
+          "cantidad": 1
+        },
+        {
+          "_id": 2020,
+          "cantidad": 1
+        },
+        {
+          "_id": 2021,
+          "cantidad": 2
+        }
+      ]
+    }
+  ]
+}

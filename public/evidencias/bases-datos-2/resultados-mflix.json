@@ -1,0 +1,627 @@
+{
+  "entorno": "MongoDB local, datos sintéticos con estructura de sample_mflix",
+  "ejercicios": [
+    {
+      "point": 1,
+      "logic": "Filtra género, año y rating. Ordena por rating y separa el conteo total del límite de diez.",
+      "total": 2,
+      "result": [
+        {
+          "title": "A Winter Story",
+          "year": 2009,
+          "imdb": {
+            "rating": 8.9
+          }
+        },
+        {
+          "title": "The Quiet Man",
+          "year": 2005,
+          "imdb": {
+            "rating": 8.7
+          }
+        }
+      ]
+    },
+    {
+      "point": 2,
+      "logic": "$ne excluye a Spielberg incluso si comparte dirección.",
+      "total": 1,
+      "result": [
+        {
+          "title": "The Quiet Man",
+          "year": 2005
+        }
+      ]
+    },
+    {
+      "point": 3,
+      "logic": "$all exige ambos géneros y $size fija el largo del arreglo.",
+      "total": 1,
+      "result": [
+        {
+          "title": "The Quiet Man",
+          "year": 2005
+        }
+      ]
+    },
+    {
+      "point": 4,
+      "logic": "Se distinguen campo ausente y valores literales permitidos.",
+      "total": 3,
+      "result": [
+        {
+          "title": "A Winter Story",
+          "year": 2009
+        },
+        {
+          "title": "Fiesta",
+          "year": 2015
+        },
+        {
+          "title": "Vuelta",
+          "year": 2015
+        }
+      ]
+    },
+    {
+      "point": 5,
+      "logic": "Los anclajes de la expresión regular marcan inicio y fin.",
+      "total": 1,
+      "result": [
+        {
+          "title": "The Quiet Man",
+          "year": 2005
+        }
+      ]
+    },
+    {
+      "point": 6,
+      "logic": "Filtra ratings numéricos antes de descomponer géneros y conserva grupos con más de 500 películas.",
+      "total": 2,
+      "result": [
+        {
+          "_id": "Drama",
+          "cantidad": 553,
+          "promedio": 7.2,
+          "maximo": 8.9
+        },
+        {
+          "_id": "Fantasy",
+          "cantidad": 2750,
+          "promedio": 6.2,
+          "maximo": 6.2
+        }
+      ]
+    },
+    {
+      "point": 7,
+      "logic": "Cuenta películas de rating alto por director. $firstN acota los títulos guardados por grupo.",
+      "total": 5,
+      "result": [
+        {
+          "_id": "Dirección 0",
+          "cantidad": 22,
+          "titulos": [
+            "Drama histórico 120",
+            "Drama histórico 140",
+            "Drama histórico 170"
+          ]
+        },
+        {
+          "_id": "Dirección 1",
+          "cantidad": 22,
+          "titulos": [
+            "Drama histórico 121",
+            "Drama histórico 141",
+            "Drama histórico 171"
+          ]
+        },
+        {
+          "_id": "Dirección 2",
+          "cantidad": 22,
+          "titulos": [
+            "Drama histórico 122",
+            "Drama histórico 142",
+            "Drama histórico 172"
+          ]
+        },
+        {
+          "_id": "Dirección 3",
+          "cantidad": 22,
+          "titulos": [
+            "Drama histórico 123",
+            "Drama histórico 143",
+            "Drama histórico 173"
+          ]
+        },
+        {
+          "_id": "Dirección 4",
+          "cantidad": 22,
+          "titulos": [
+            "Drama histórico 124",
+            "Drama histórico 144",
+            "Drama histórico 174"
+          ]
+        }
+      ]
+    },
+    {
+      "point": 8,
+      "logic": "Trunca el año numérico a múltiplos de diez.",
+      "total": 7,
+      "result": [
+        {
+          "_id": 1950,
+          "cantidad": 1210
+        },
+        {
+          "_id": 1960,
+          "cantidad": 1210
+        },
+        {
+          "_id": 1970,
+          "cantidad": 1210
+        },
+        {
+          "_id": 1980,
+          "cantidad": 1210
+        },
+        {
+          "_id": 1990,
+          "cantidad": 1210
+        }
+      ]
+    },
+    {
+      "point": 9,
+      "logic": "Agrupa comentarios, verifica la referencia a movies y limita a los diez primeros.",
+      "total": 2,
+      "result": [
+        {
+          "comentarios": 130,
+          "title": "The Quiet Man",
+          "year": 2005
+        },
+        {
+          "comentarios": 130,
+          "title": "A Winter Story",
+          "year": 2009
+        }
+      ]
+    },
+    {
+      "point": 10,
+      "logic": "Agrupa por email y toma los extremos cronológicos con fecha BSON.",
+      "total": 1,
+      "result": [
+        {
+          "_id": "lectora@example.test",
+          "cantidad": 260,
+          "primero": "2025-01-01T00:00:00.000Z",
+          "ultimo": "2025-09-17T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "point": 11,
+      "logic": "$switch aplica los umbrales en orden. Un rating ausente o inválido queda en Baja. $out materializa la colección.",
+      "total": 4,
+      "result": [
+        {
+          "title": "Fiesta",
+          "genres": [
+            "Comedy"
+          ],
+          "rating": 8.1,
+          "categoria": "Alta"
+        },
+        {
+          "title": "Mar",
+          "genres": [
+            "Drama"
+          ],
+          "rating": null,
+          "categoria": "Baja"
+        },
+        {
+          "title": "Puente",
+          "genres": [
+            "Drama"
+          ],
+          "rating": 6.6,
+          "categoria": "Media"
+        },
+        {
+          "title": "Vuelta",
+          "genres": [
+            "Comedy"
+          ],
+          "rating": 5.2,
+          "categoria": "Baja"
+        }
+      ]
+    },
+    {
+      "point": 12,
+      "logic": "Marca e incrementa solo las películas de categoría Media.",
+      "total": 1,
+      "result": {
+        "modificados": 1,
+        "muestra": {
+          "title": "Puente",
+          "genres": [
+            "Drama"
+          ],
+          "rating": 6.699999999999999,
+          "categoria": "Media",
+          "revisado": true
+        }
+      }
+    },
+    {
+      "point": 13,
+      "logic": "Borra los documentos materializados de categoría Baja.",
+      "total": 2,
+      "result": {
+        "restantes": 2
+      }
+    },
+    {
+      "point": 14,
+      "logic": "El índice coloca género (igualdad), rating (orden) y año (rango). Se compara el plan ganador sin hint; el tiempo depende del conjunto y del equipo.",
+      "total": 2,
+      "result": {
+        "before": {
+          "plan": {
+            "isCached": false,
+            "stage": "PROJECTION_DEFAULT",
+            "transformBy": {
+              "_id": 0,
+              "title": 1,
+              "year": 1,
+              "imdb.rating": 1
+            },
+            "inputStage": {
+              "stage": "SORT",
+              "sortPattern": {
+                "imdb.rating": -1
+              },
+              "memLimit": 104857600,
+              "limitAmount": 10,
+              "type": "simple",
+              "inputStage": {
+                "stage": "COLLSCAN",
+                "filter": {
+                  "$and": [
+                    {
+                      "genres": {
+                        "$eq": "Drama"
+                      }
+                    },
+                    {
+                      "year": {
+                        "$lte": 2010
+                      }
+                    },
+                    {
+                      "imdb.rating": {
+                        "$gte": 8
+                      }
+                    },
+                    {
+                      "year": {
+                        "$gte": 2000
+                      }
+                    }
+                  ]
+                },
+                "direction": "forward"
+              }
+            }
+          },
+          "totalDocsExamined": 6056,
+          "executionTimeMillis": 7,
+          "nReturned": 2
+        },
+        "after": {
+          "plan": {
+            "isCached": false,
+            "stage": "LIMIT",
+            "limitAmount": 10,
+            "inputStage": {
+              "stage": "PROJECTION_DEFAULT",
+              "transformBy": {
+                "_id": 0,
+                "title": 1,
+                "year": 1,
+                "imdb.rating": 1
+              },
+              "inputStage": {
+                "stage": "FETCH",
+                "inputStage": {
+                  "stage": "IXSCAN",
+                  "keyPattern": {
+                    "genres": 1,
+                    "imdb.rating": -1,
+                    "year": 1
+                  },
+                  "indexName": "genero_rating_anio_esr",
+                  "isMultiKey": true,
+                  "multiKeyPaths": {
+                    "genres": [
+                      "genres"
+                    ],
+                    "imdb.rating": [],
+                    "year": []
+                  },
+                  "isUnique": false,
+                  "isSparse": false,
+                  "isPartial": false,
+                  "indexVersion": 2,
+                  "direction": "forward",
+                  "indexBounds": {
+                    "genres": [
+                      "[\"Drama\", \"Drama\"]"
+                    ],
+                    "imdb.rating": [
+                      "[inf.0, 8]"
+                    ],
+                    "year": [
+                      "[2000, 2010]"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "totalDocsExamined": 2,
+          "executionTimeMillis": 9,
+          "nReturned": 2
+        }
+      }
+    },
+    {
+      "point": 15,
+      "logic": "Fecha de compra fija para reproducibilidad. El pedido conserva el precio histórico y el ranking usa el promedio guardado.",
+      "result": {
+        "pedidos": [
+          {
+            "_id": "o1",
+            "fecha": "2026-11-10T00:00:00.000Z",
+            "total": 48000
+          }
+        ],
+        "restaurantes": [
+          {
+            "_id": "r1",
+            "nombre": "La Plaza",
+            "promedio": 4.8
+          }
+        ]
+      },
+      "examples": {
+        "restaurantes": {
+          "_id": "r1",
+          "ciudad": "Bogotá",
+          "nombre": "La Plaza",
+          "promedio": 4.8,
+          "totalResenas": 1,
+          "ultimas": [
+            {
+              "id": "v1",
+              "nota": 4.8
+            }
+          ]
+        },
+        "menus": {
+          "_id": "m1",
+          "restauranteId": "r1",
+          "nombre": "Bowl",
+          "precio": 25000,
+          "atributos": [
+            {
+              "clave": "vegano",
+              "valor": true
+            }
+          ]
+        },
+        "resenas": {
+          "_id": "v1",
+          "restauranteId": "r1",
+          "clienteId": "c1",
+          "nota": 4.8,
+          "fecha": "2026-11-03T00:00:00.000Z"
+        },
+        "pedidos": {
+          "_id": "o1",
+          "clienteId": "c1",
+          "restauranteId": "r1",
+          "repartidorId": "d1",
+          "fecha": "2026-11-10T00:00:00.000Z",
+          "items": [
+            {
+              "menuId": "m1",
+              "nombre": "Bowl",
+              "precioUnitario": 24000,
+              "cantidad": 2
+            }
+          ],
+          "total": 48000
+        },
+        "clientes": {
+          "_id": "c1",
+          "nombre": "Cliente de prueba"
+        },
+        "repartidores": {
+          "_id": "d1",
+          "nombre": "Repartidor de prueba"
+        }
+      }
+    },
+    {
+      "point": 16,
+      "logic": "Promedio ponderado por cantidad de mediciones en cada bucket y sensores únicos con alertas sobre 37 µg/m³.",
+      "result": {
+        "promedioHorario": [
+          {
+            "_id": "2026-11-24T13:00:00.000Z",
+            "promedio": 35
+          }
+        ],
+        "sensoresConAlertas": [
+          {
+            "_id": "s1",
+            "alertas": 1
+          },
+          {
+            "_id": "s2",
+            "alertas": 1
+          }
+        ]
+      },
+      "examples": {
+        "sensores": {
+          "_id": "s1",
+          "localidad": "Usaquén",
+          "version": 1
+        },
+        "lecturas_por_hora": {
+          "_id": "6b0798ca839f57c76a1dded8",
+          "sensorId": "s1",
+          "localidad": "Usaquén",
+          "hora": "2026-11-24T13:00:00.000Z",
+          "schemaVersion": 1,
+          "sumaPm25": 65,
+          "n": 2,
+          "lecturas": [
+            {
+              "minuto": 0,
+              "pm25": 25,
+              "pm10": 35,
+              "temperatura": 16,
+              "humedad": 70
+            },
+            {
+              "minuto": 1,
+              "pm25": 40,
+              "pm10": 52,
+              "temperatura": 17,
+              "humedad": 69
+            }
+          ]
+        },
+        "alertas": {
+          "_id": "6b0798ca839f57c76a1ddeda",
+          "sensorId": "s1",
+          "fecha": "2026-11-24T13:01:00.000Z",
+          "pm25": 40
+        }
+      }
+    },
+    {
+      "point": 17,
+      "logic": "Feed cronológico a partir de autores seguidos y ranking de la semana por interacciones precalculadas.",
+      "result": {
+        "feed": [
+          {
+            "_id": "p1",
+            "autorId": "u1",
+            "tipo": "encuesta",
+            "opciones": [
+              "Sí",
+              "No"
+            ],
+            "fecha": "2026-11-24T00:00:00.000Z",
+            "interacciones": 8,
+            "comentariosRecientes": [
+              {
+                "id": "cmt1",
+                "texto": "Interesante"
+              }
+            ]
+          },
+          {
+            "_id": "p2",
+            "autorId": "e2",
+            "tipo": "imagen",
+            "rutaImagen": "/foto.jpg",
+            "fecha": "2026-11-24T00:00:00.000Z",
+            "interacciones": 3,
+            "comentariosRecientes": []
+          },
+          {
+            "_id": "p3",
+            "autorId": "u1",
+            "tipo": "video",
+            "rutaVideo": "/video.mp4",
+            "fecha": "2026-11-24T00:00:00.000Z",
+            "interacciones": 2,
+            "comentariosRecientes": []
+          }
+        ],
+        "publicacionesDestacadas": [
+          {
+            "_id": "p1",
+            "tipo": "encuesta",
+            "interacciones": 8
+          },
+          {
+            "_id": "p2",
+            "tipo": "imagen",
+            "interacciones": 3
+          },
+          {
+            "_id": "p3",
+            "tipo": "video",
+            "interacciones": 2
+          },
+          {
+            "_id": "p4",
+            "tipo": "texto",
+            "interacciones": 0
+          }
+        ]
+      },
+      "examples": {
+        "perfiles": {
+          "_id": "e1",
+          "sigue": [
+            "u1",
+            "e2"
+          ],
+          "seguidores": [],
+          "outlier": false
+        },
+        "seguidores_externos": {
+          "_id": "6b0798cb839f57c76a1ddedc",
+          "cuentaId": "u1",
+          "seguidorId": "e1"
+        },
+        "publicaciones": {
+          "_id": "p1",
+          "autorId": "u1",
+          "tipo": "encuesta",
+          "opciones": [
+            "Sí",
+            "No"
+          ],
+          "fecha": "2026-11-24T00:00:00.000Z",
+          "interacciones": 8,
+          "comentariosRecientes": [
+            {
+              "id": "cmt1",
+              "texto": "Interesante"
+            }
+          ]
+        },
+        "comentarios_publicacion": {
+          "_id": "cmt1",
+          "publicacionId": "p1",
+          "autorId": "e1",
+          "texto": "Interesante",
+          "fecha": "2026-11-24T00:00:00.000Z"
+        }
+      }
+    }
+  ]
+}
